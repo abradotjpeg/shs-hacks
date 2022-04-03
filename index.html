@@ -1,10 +1,290 @@
 <html lang="en">
   <head>
     <script>
-      
+      var alert = document.getElementById("alert");
+var objective = document.getElementById("objective");
+var compostLabel = document.getElementById("compostLabel");
+var trashLabel = document.getElementById("trashLabel");
+var hint = document.getElementById("hint");
+var trashCollected = 0;
+var prevSunFlowerGrowth = 0;
+var prevFernGrowth = 0;
+var prevBerryBushGrowth = 0;
+var prevTreeGrowth = 0;
+var sunFlowerGrowth = 0;
+var fernGrowth = 0;
+var berryBushGrowth = 0;
+var treeGrowth = 0;
+var seeds = 1;
+var compost = 0;
+var growthPowder = 0;
+var delay = 50;
+
+function vis(trashNum){
+  trashNumber = document.getElementById(trashNum);
+  trashNumber.style.visibility = "hidden";
+  trashCollected++;
+  compost++;
+  if (trashCollected == 36) {
+    doneTrash();
+  }
+}
+
+function doneTrash(){
+  alert.innerHTML = "You picked up all the trash!";
+  setTimeout(() => {  objective.innerHTML = "Objective: Turn the trash into compost." }, 1000);
+  hint.innerHTML = "One piece of trash yields 3 compost.";
+  setTimeout(() => {  alert.innerHTML = "..."; }, 2000);
+}
+
+function grow(potNum){
+  if(growthPowder >= 1){
+  if(potNum.equals("pot0") && sunFlowerGrowth != 3){
+    sunFlowerGrowth++;
+  }else if(potNum.equals("pot1") && fernGrowth != 3){
+fernGrowth++;
+}else if(potNum.equals("pot2") && berryBushGrowth != 3)
+{berryBushGrowth++;
+}else if(potNum.equals("pot3") && treeGrowth != 3){
+    treeGrowth++;
+} else{
+    //Print this plant is already grown
+    growthPowder++;
+  }
+    growthPowder--;
+  }
+}
+  if ((compost>3)||(compost<3)) {
+    compost-=3;
+    growthPowder++;
+    
+    //print you got compost
+ }
+  if(prevTreeGrowth != treeGrowth){
+     if(treeGrowth == 1){   document.getElementById("tree").style.visibility = "visible";
+     }
+  
+    else if(treeGrowth == 2){
+      document.getElementById("tree").setProperty("src", "https://i.postimg.cc/1X28hZVz/almost-Tree-Sprite.png");
+    }
+    else if(treeGrowth == 3){
+       document.getElementById("tree").setProperty("src", "https://i.postimg.cc/KYf4cT3w/full-Tree-Sprite.png");
+    }
+  }
+    if(prevBerryBushGrowth != berryBushGrowth){
+          if(berryBushGrowth == 1){
+       document.getElementById("berryBush").style.visibility = "visible";
+     }
+    else if(berryBushGrowth == 2){
+      document.getElementById("berryBush").setProperty("src", "https://i.postimg.cc/0Q5M7nq9/Almost-berry-bush.png");
+
+    }
+    else if(berryBushGrowth == 3){
+       document.getElementById("berryBush").setProperty("src", "https://i.postimg.cc/6QtyNcqC/berrybush.png");
+    }
+     }
+    if(prevFernGrowth != fernGrowth){
+          if(fernGrowth == 1){
+       document.getElementById("fern").style.visibility = "visible";
+     }
+    else if(fernGrowth == 2){
+      document.getElementById("fern").setProperty("src", "https://i.postimg.cc/wvWt2N6L/Almost-fern.png");
+    }
+    else if(fernGrowth == 3){
+       document.getElementById("fern").setProperty("src", "https://i.postimg.cc/W1MhKCN2/fern-Sprite.png");
+    }
+     }
+    if(prevSunFlowerGrowth != sunFlowerGrowth){
+          if(sunFlowerGrowth == 1){
+       document.getElementById("sunFlower").style.visibility = "visible";
+     }
+    else if(sunFlowerGrowth == 2){
+      document.getElementById("sunFlower").setProperty("src", "https://i.postimg.cc/yxkDbNd5/Almost-Sunflower.png");
+    }
+ 
+    else if(sunFlowerGrowth == 3){
+       document.getElementById("sunFlower").setProperty("src", "https://i.postimg.cc/4y731F2R/sunflower-Sprite.png");
+    }
+}
     </script>
   </head>
   <body>
+  <head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press Start 2P">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
   
-  </body>
+</head>
+<body>
+  <div class = "heading">
+    <p class = "text">Garden Wizard</p>
+  </div>
+  <div class = "main">
+    <div class = "body1">
+      <p class = "slogan">a game turning pollution into enviromental cleanliness</p>
+    </div>
+    <div class = "body2">
+    </div>
+  </div>
+  <div class="game">
+    <img class="can" id="can0" onclick = 'vis("can0")'src = "https://i.postimg.cc/9QRcqmBQ/can.png">
+    <img class="can" id="can1" onclick = "vis('can1')"src = "https://i.postimg.cc/9QRcqmBQ/can.png">
+        <img class="can" id="can2" onclick = "vis('can2')"src = "https://i.postimg.cc/9QRcqmBQ/can.png">
+            <img class="can" id="can3" onclick = "vis('can3')"src = "https://i.postimg.cc/9QRcqmBQ/can.png">
+                <img class="can" id="can4" onclick = "vis('can4')" src = "https://i.postimg.cc/9QRcqmBQ/can.png">
+                <img class="can" id="can5" onclick = "vis('can5')" src = "https://i.postimg.cc/9QRcqmBQ/can.png">
+                <img class="can" id="can6" onclick = "vis('can6')" src = "https://i.postimg.cc/9QRcqmBQ/can.png">
+                <img class="can" id="can7" onclick = "vis('can7')" src = "https://i.postimg.cc/9QRcqmBQ/can.png">
+                <img class="can" id="can8" onclick = "vis('can8')" src = "https://i.postimg.cc/9QRcqmBQ/can.png">
+                <img class="can" id="can9" onclick = "vis('can9')" src = "https://i.postimg.cc/9QRcqmBQ/can.png">
+                <img class="can" id="can10" onclick = "vis('can10')" src = "https://i.postimg.cc/9QRcqmBQ/can.png">
+                <img class="can" id="can11" onclick = "vis('can11')" src = "https://i.postimg.cc/9QRcqmBQ/can.png">
+    <img class="banana" id="banana0" onclick = "vis('banana0')" src = https://i.postimg.cc/fW5dHdyh/banana.png>
+             <img class="banana" id="banana1" onclick = "vis('banana1')"src = https://i.postimg.cc/fW5dHdyh/banana.png>
+        <img class="banana" id="banana2" onclick = "vis('banana2')"src = https://i.postimg.cc/fW5dHdyh/banana.png>
+                 <img class="banana" id="banana3" onclick = "vis('banana3')"src = https://i.postimg.cc/fW5dHdyh/banana.png>
+        <img class="banana" id="banana4" onclick = "vis('banana4')"src = https://i.postimg.cc/fW5dHdyh/banana.png>
+                 <img class="banana" id="banana5" onclick = "vis('banana5')"src = https://i.postimg.cc/fW5dHdyh/banana.png>
+        <img class="banana" id="banana6" onclick = "vis('banana6')"src = https://i.postimg.cc/fW5dHdyh/banana.png>
+                 <img class="banana" id="banana7" onclick = "vis('banana7')"src = https://i.postimg.cc/fW5dHdyh/banana.png>
+        <img class="banana" id="banana8" onclick = "vis('banana8')"src = https://i.postimg.cc/fW5dHdyh/banana.png>
+                 <img class="banana" id="banana9" onclick = "vis('banana9')"src = https://i.postimg.cc/fW5dHdyh/banana.png>
+        <img class="banana" id="banana10" onclick = "vis('banana10')" src = https://i.postimg.cc/fW5dHdyh/banana.png>
+                 <img class="banana" id="banana11" onclick = "vis('banana11')" src = https://i.postimg.cc/fW5dHdyh/banana.png>
+    <img class="paper" id="paper0" onclick = "vis('paper0')"src = https://i.postimg.cc/xdJCPk7n/paper.png>
+    <img class="paper" id="paper1" onclick = "vis('paper1')"src = https://i.postimg.cc/xdJCPk7n/paper.png>
+    <img class="paper" id="paper2" onclick = "vis('paper2')"src = https://i.postimg.cc/xdJCPk7n/paper.png>
+    <img class="paper" id="paper3" onclick = "vis('paper3')" src = https://i.postimg.cc/xdJCPk7n/paper.png>
+    <img class="paper" id="paper4" onclick = "vis('paper4')"src = https://i.postimg.cc/xdJCPk7n/paper.png>
+    <img class="paper" id="paper5" onclick = "vis('paper5')" src = https://i.postimg.cc/xdJCPk7n/paper.png>
+    <img class="paper" id="paper6" onclick = "vis('paper6')"src = https://i.postimg.cc/xdJCPk7n/paper.png>
+    <img class="paper" id="paper7" onclick = "vis('paper7')" src = https://i.postimg.cc/xdJCPk7n/paper.png>
+    <img class="paper" id="paper8" onclick = "vis('paper8')"src = https://i.postimg.cc/xdJCPk7n/paper.png>
+    <img class="paper" id="paper9" onclick = "vis('paper9')" src = https://i.postimg.cc/xdJCPk7n/paper.png>
+    <img class="paper" id="paper10" onclick = "vis('paper10')"src = https://i.postimg.cc/xdJCPk7n/paper.png>
+    <img class="paper" id="paper11" onclick = "vis('paper11')"src = https://i.postimg.cc/xdJCPk7n/paper.png>
+    <img class="flowerPot" id="pot0" src = https://i.postimg.cc/W1Rd5TPW/flowerpot.png>
+        <img class="flowerPot" id="pot1" onclick="grow('pot1')" src = https://i.postimg.cc/W1Rd5TPW/flowerpot.png>
+        <img class="flowerPot" id="pot2" onclick ="grow('pot2')" src = https://i.postimg.cc/W1Rd5TPW/flowerpot.png>
+        <img class="flowerPot" id="pot3" onclick = "grow('pot3')" src = https://i.postimg.cc/W1Rd5TPW/flowerpot.png>
+    <img id="compost" src="https://i.postimg.cc/BZVL127G/compost-Sprite.png">
+    <img id="sunFlower" src = "https://i.postimg.cc/6qkpbLF2/Sprout.png">
+    <img id="fern" src = "https://i.postimg.cc/6qkpbLF2/Sprout.png">
+    <img id="tree" src = "https://i.postimg.cc/6qkpbLF2/Sprout.png">
+    <img id="berryBush" src = "https://i.postimg.cc/6qkpbLF2/Sprout.png">
+    <div class="statsDiv">
+      <p id = "objective">Objective: Clean up the trash.</p>
+      <p id = "alert">...</p>
+      <p id = "hint">Hint: Click on the trash.</p>
+      <p id = "about">What's in this old building? Let's turn it into something beautiful while helping the environment by making a garden!</p>
+      </div>
+    <img class="backImg" src = "https://i.postimg.cc/HW2wFBHg/background-Game.jpg">
+    <div class="invDiv">
+      <img class = "trashInv" src = https://i.postimg.cc/fW5dHdyh/banana.png>
+      <p id="trashLabel">trash: 0</p>
+      <img class = "compostInv" src = https://i.postimg.cc/BZVL127G/compost-Sprite.png>
+      <p id = "compostLabel">compost: 0</p>
+    </div>
+  </div>
+</body>
+<style>
+  body {
+  width: 1500px;
+  display: center;
+  background-image: url("https://i.postimg.cc/c1kTbTZz/skyseamless.jpg");
+  background-repeat: repeat;
+  text-align: center;
+  background-size: 50%;
+}
+
+.heading{
+  display: inline-block;
+  color: black;
+  background: rgba(0, 0, 0, 0.5);
+  border-style: solid black;
+  border-radius: 25px;
+  width: 80%;
+  height: 100px;
+  margin: 2%, 10%, 2%, 10%;
+  border: solid white;
+  border-width: 1px;
+}
+
+.body1{
+  color: black;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 25px;
+  width: 65%;
+  height: 100px;
+  margin-top: 10px;
+  margin-left: 10%;
+  display: inline-block;
+  float: left;
+  padding-bottom: 10px;
+}
+.body2{
+  color: black;
+  background: rgba(0, 0, 0, 0.5);
+  border-style: solid black;
+  border-radius: 25px;
+  width: 14%;
+  height: 110px;
+  margin-top: 10px;
+  margin-left: 1%;
+  margin-right: 10%;
+  display: inline-block;
+
+}
+
+.main{
+
+}
+
+.text{
+  color: white;
+  font-family:"Press Start 2P";
+  font-size: 2em;
+}
+
+.slogan{
+  color: white;
+  font-family:"Poppins";
+  font-size: 2em;
+}
+
+.game{
+  display: inline-block;
+  color: black;
+  background: rgba(0, 0, 0, 0.5);
+  border-style: solid black;
+  border-radius: 25px;
+  width: 80%;
+  height: 650px;
+  margin-top: 1%;
+  border: solid white;
+  border-width: 1px;
+}
+
+.statsDiv{
+  float: left;
+  color: black;
+  background: rgba(0, 0, 0, 0.5);
+  border-style: solid black;
+  border-radius: 25px;
+  width: 20%;
+  height: 600px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  border: solid white;
+  border-width: 1px;
+  margin-left: 3%;
+}
+.backImg{
+  width: 50%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  float:left;
+  margin-left: 2%;
+}
+ </style>
+
 </html>
